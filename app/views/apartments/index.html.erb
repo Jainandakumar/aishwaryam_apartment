@@ -1,0 +1,33 @@
+<%= link_to 'Sign Out', destroy_user_session_path, method: 'delete'%>
+
+<% if !@apartment%>
+	<%= link_to "Add Apartment", new_apartment_path%>
+<%else%>
+	<div class="row">
+		<%= @apartment.name%>
+	</div>
+	<div class="row">
+		<%= link_to "Add Blocks", new_block_path%>
+	</div>
+	<div class="row">
+		<table>
+			<thead>
+				<th>Name</th>
+				<th>Floors</th>
+				<th>Flats</th>
+				<th>Manage</th>
+			</thead>
+			<tbody>
+				<% @blocks.each do |block|%>
+					<td><%= block.name%></td>
+					<td><%= block.floors.count%> <%= link_to "Add", nil%></td>
+					<td><%= block.floors.count%></td>
+					<td>
+						<u><%= link_to "Edit", edit_block_path(block)%></u>
+						<u><%= link_to "Delete", block, method: :delete%></u>
+					</td>
+				<%end%>
+			</tbody>
+		</table>
+	</div>
+<%end%>

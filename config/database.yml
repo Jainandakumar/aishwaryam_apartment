@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: aishwaryam_apartment
+  port: 5432
+  username: root
+  password: exa10sept
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: aishwaryam_apartment
+  port: 5432
+  username: root
+  password: exa10sept
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: aishwaryam_apartment
+  port: 5432 
+  username: root
+  password: exa10sept

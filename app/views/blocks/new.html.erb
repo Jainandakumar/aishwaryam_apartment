@@ -1,0 +1,9 @@
+<%= form_for @block do |block|%>
+	<div class="field">
+    <%= block.label :name %>
+    <%= block.text_field :name, autofocus: true %>
+  </div>
+  <div class="actions">
+    <%= block.submit "Create" %>
+  </div>
+<%end%>
