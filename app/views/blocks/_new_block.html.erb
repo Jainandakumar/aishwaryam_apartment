@@ -1,0 +1,17 @@
+<div class="field row" style="margin-bottom: 10px;">
+	<div class="form-group">
+	  <label class="col-sm-2 control-label">Name</label>
+	  <div class="col-sm-4">
+		  <%= text_field_tag "block[#{@row}]", nil, class: "block_name form-control", placeholder: "Block name", required: true %>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  // function remove_row(ele)
+  // {
+  //   var row_no = $(ele).attr("id");
+  //   $("#"+row_no+"_div").remove();
+  //   $("#"+row_no).remove();
+  // }
+</script>

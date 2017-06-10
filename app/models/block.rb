@@ -4,4 +4,8 @@ class Block < ActiveRecord::Base
 
 	has_many :floors
 
+	def no_of_flats
+		self.floors.includes(:flats).map{|f| f.flats.count}.sum
+	end
+
 end

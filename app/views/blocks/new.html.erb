@@ -1,9 +1,39 @@
-<%= form_for @block do |block|%>
-	<div class="field">
-    <%= block.label :name %>
-    <%= block.text_field :name, autofocus: true %>
-  </div>
-  <div class="actions">
-    <%= block.submit "Create" %>
-  </div>
+<div class="">
+  <h1><small>Add block(s)</small></h1>
+</div>
+<hr>
+<%= form_tag blocks_create_block_path, html: {class: "form-horizontal"} do %>
+	<div id="new_block_partial">
+		<%= render partial: "new_block"%>
+	</div>
+	<div class="row col-md-12">
+		<button onclick="event.preventDefault(); addRow()" class= "btn btn-success">Add block </button>
+		<%= hidden_field_tag "apartment_id", @apartment.id%>
+	  <%= submit_tag "Create", class: "btn btn-success col-md-offset-3", style: "margin-left: 242px;"%>
+	</div>
 <%end%>
+
+<script type="text/javascript">
+	function addRow(){
+		var last_row = $(".block_name").last().attr("id").split("_")[1]
+		var data = {row: last_row, apartment_id: $("#apartment_id").val()}
+	  $.ajax({    	  
+			data: data,
+			url:   "<%= new_block_path%>",
+			success: function(response){      
+			  $('#new_block_partial').append(response);
+			}
+		});
+	}
+	$(document).ready(function(){
+		$("#add_block").click(function(){
+			$.ajax({
+				data: {row: "<%= @row%>"},
+				url: "<%= new_block_path%>",
+				dataType: "JSON"
+			}).success(function(json){
+
+			});
+		})
+	});
+</script>

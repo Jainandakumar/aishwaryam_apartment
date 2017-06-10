@@ -1,33 +1,22 @@
-<%= link_to 'Sign Out', destroy_user_session_path, method: 'delete'%>
-
-<% if !@apartment%>
-	<%= link_to "Add Apartment", new_apartment_path%>
-<%else%>
-	<div class="row">
-		<%= @apartment.name%>
-	</div>
-	<div class="row">
-		<%= link_to "Add Blocks", new_block_path%>
-	</div>
-	<div class="row">
-		<table>
-			<thead>
-				<th>Name</th>
-				<th>Floors</th>
-				<th>Flats</th>
-				<th>Manage</th>
-			</thead>
-			<tbody>
-				<% @blocks.each do |block|%>
-					<td><%= block.name%></td>
-					<td><%= block.floors.count%> <%= link_to "Add", nil%></td>
-					<td><%= block.floors.count%></td>
-					<td>
-						<u><%= link_to "Edit", edit_block_path(block)%></u>
-						<u><%= link_to "Delete", block, method: :delete%></u>
-					</td>
-				<%end%>
-			</tbody>
-		</table>
-	</div>
-<%end%>
+<%= link_to "Add apartment", new_apartment_path, class: "btn btn-success btn-sm pull-right"%>
+<table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<th>Apartments</th>
+		<th>Blocks</th>
+		<th>Flats</th>
+		<th>Manage</th>
+	</thead>
+	<tbody>
+		<% @apartments.each do |ap|%>
+			<tr>
+				<td><%= link_to ap.name, apartment_path(ap)%></td>
+				<td><%= ap.blocks.count%></td>
+				<td><%= ap.no_of_flats%></td>
+				<td>
+					<u><%= link_to "Edit", edit_apartment_path(ap), class: "btn btn-warning btn-sm"%></u>
+					<u><%= link_to "Delete", ap, method: :delete, class: "btn btn-danger btn-sm"%></u>
+				</td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

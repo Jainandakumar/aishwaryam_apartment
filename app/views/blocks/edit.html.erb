@@ -1,0 +1,17 @@
+<div class="">
+  <h1><small>Edit block</small></h1>
+</div>
+<hr>
+<%= form_for @block, html: {class: "form-horizontal"} do |block|%>
+	<div class="form-group">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-4">
+	    <%= block.text_field :name, autofocus: true, class: "form-control", placeholder: "Name", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <%= block.submit "Update", class: "btn btn-success pull-right" %>
+    </div>
+  </div>
+<%end%>

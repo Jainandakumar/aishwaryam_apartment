@@ -1,0 +1,39 @@
+<div class="">
+  <h1><small>Add flat(s)</small></h1>
+</div>
+<hr>
+<%= form_tag flats_create_flat_path, html: {class: "form-horizontal"} do %>
+	<div id="new_flat_partial">
+		<%= render partial: "new_flat"%>
+	</div>
+	<div class="row col-md-12">
+		<button onclick="event.preventDefault(); addRow()" class= "btn btn-success">Add flat </button>
+		<%= hidden_field_tag "floor_id", @floor.id%>
+    <%= submit_tag "Create", class: "btn btn-success pull-right", style: "margin-right: -30px;"%>
+  </div>
+<%end%>
+
+<script type="text/javascript">
+	function addRow(){
+		var last_row = $(".flat_name").last().attr("id").split("_")[1]
+		var data = {row: last_row, floor_id: $("#floor_id").val()}
+	  $.ajax({    	  
+			data: data,
+			url:   "<%= new_flat_path%>",
+			success: function(response){      
+			  $('#new_flat_partial').append(response);
+			}
+		});
+	}
+	$(document).ready(function(){
+		$("#add_flat").click(function(){
+			$.ajax({
+				data: {row: "<%= @row%>"},
+				url: "<%= new_flat_path%>",
+				dataType: "JSON"
+			}).success(function(json){
+
+			});
+		})
+	});
+</script>

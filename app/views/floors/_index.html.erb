@@ -1,0 +1,23 @@
+<p>Block: <%= @block.name%></p>
+<p><%= link_to "Add Floor", new_floor_path(block_id: @block.id)%></p>
+<div class="row">
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Flats</th>
+			<th>Manage</th>
+		</thead>
+		<tbody>
+			<% @floors.each do |floor|%>
+				<tr>
+					<td><%= link_to floor.name, floor_path(floor)%></td>
+					<td><%= link_to floor.flats.count, flats_path(floor_id: floor.id)%></td>
+					<td>
+						<u><%= link_to "Edit", edit_floor_path(floor)%></u>
+						<u><%= link_to "Delete", floor, method: :delete%></u>
+					</td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>

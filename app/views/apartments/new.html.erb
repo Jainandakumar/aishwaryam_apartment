@@ -1,47 +1,71 @@
-<h2>Add Apartment</h2>
-
-<%= form_for @apartment do |ap| %>
-  <div class="field">
-    <%= ap.label :name %><br />
-    <%= ap.text_field :name, autofocus: true %>
+<div class="">
+  <h1><small>Add apartment</small></h1>
+</div>
+<hr>
+<%= form_for @apartment, html: {class: "form-horizontal"} do |ap| %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :name, autofocus: true, class: "form-control", placeholder: "Example Apartments", required: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :owner_name %><br />
-    <%= ap.text_field :owner%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Owner Name</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :owner, class: "form-control", placeholder: "Kumar", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :builder_name %><br />
-    <%= ap.text_field :builder%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Builder Name</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :builder, class: "form-control", placeholder: "Kumar Builders", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :address %><br />
-    <%= ap.text_area :address%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Address</label>
+    <div class="col-sm-4">
+      <%= ap.text_area :address, class: "form-control", placeholder: "Address", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :locality %><br />
-    <%= ap.text_field :locality%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Locality</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :locality, class: "form-control", placeholder: "Locality"%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :city %><br />
-    <%= ap.text_field :city%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">City</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :city, class: "form-control", placeholder: "City", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :postcode %><br />
-    <%= ap.number_field :postcode%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Post Code</label>
+    <div class="col-sm-4">
+      <%= ap.number_field :postcode, class: "form-control", placeholder: "Eg. 641620", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :state %><br />
-    <%= ap.text_field :state%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">State</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :state, class: "form-control", placeholder: "State", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :country %><br />
-    <%= ap.text_field :country%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Country</label>
+    <div class="col-sm-4">
+      <%= ap.text_field :country, class: "form-control", placeholder: "Country", required: true%>
+    </div>
   </div>
-  <div class="field">
-    <%= ap.label :phone %><br />
-    <%= ap.phone_field :phone%>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phone</label>
+    <div class="col-sm-4">
+      <%= ap.phone_field :phone, class: "form-control", placeholder: "Eg. 0000000000", required: true%>
+    </div>
   </div>
-  <div class="actions">
-    <%= ap.submit "Add" %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <%= ap.submit "Add", class: "btn btn-success pull-right" %>
+    </div>
   </div>
 <% end %>

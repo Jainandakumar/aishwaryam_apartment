@@ -1,0 +1,22 @@
+<%= link_to "Add blocks", new_block_path(apartment_id: @apartment.id), class: "btn btn-success btn-sm pull-right"%>
+<table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<th>Name</th>
+		<th>Floors</th>
+		<th>Flats</th>
+		<th>Manage</th>
+	</thead>
+	<tbody>
+		<% @blocks.each do |block|%>
+			<tr>
+				<td><%= link_to block.name, block_path(block)%></td>
+				<td><%= block.floors.count%></td>
+				<td><%= block.no_of_flats%></td>
+				<td>
+					<u><%= link_to "Edit", edit_block_path(block), class: "btn btn-warning btn-sm"%></u>
+					<u><%= link_to "Delete", block, method: :delete, class: "btn btn-danger btn-sm"%></u>
+				</td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

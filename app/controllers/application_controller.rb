@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   before_action :get_apartment, if: :authenticate_user!
 
+  add_breadcrumb "Apartments", :apartments_path
+
   def get_apartment
     @apartment = Apartment.first if current_user && Apartment.first.present?
   end

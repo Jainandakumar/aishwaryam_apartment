@@ -1,0 +1,26 @@
+<%= link_to "Add flats", new_flat_path(floor_id: @floor.id), class: "btn btn-success btn-sm pull-right"%>
+<table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<th>Name</th>
+		<th>Bed Rooms</th>
+		<th>Sqft</th>
+		<th>Owner</th>
+		<th>Tenant</th>
+		<th>Manage</th>
+	</thead>
+	<tbody>
+		<% @flats.each do |flat|%>
+			<tr>
+				<td><%= link_to flat.name, flat_path(flat)%></td>
+				<td><%= flat.bed_room%></td>
+				<td><%= flat.sq_ft%></td>
+				<td><%= flat.sq_ft%></td>
+				<td><%= flat.sq_ft%></td>
+				<td>
+					<u><%= link_to "Edit", edit_flat_path(flat), class: "btn btn-warning btn-sm"%></u>
+					<u><%= link_to "Delete", flat, method: :delete, class: "btn btn-danger btn-sm"%></u>
+				</td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>
