@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516155803) do
+ActiveRecord::Schema.define(version: 20170807120549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,11 @@ ActiveRecord::Schema.define(version: 20170516155803) do
     t.integer  "floor_id"
     t.integer  "bed_room"
     t.float    "sq_ft"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "status",       default: true
+    t.boolean  "availability", default: true
+    t.float    "rent",         default: 0.0
   end
 
   create_table "flats_residents", force: :cascade do |t|
@@ -53,14 +56,20 @@ ActiveRecord::Schema.define(version: 20170516155803) do
     t.boolean  "active"
     t.date     "from"
     t.date     "to"
-    t.string   "resident_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "family_head"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "floors", force: :cascade do |t|
     t.string   "name"
     t.integer  "block_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "months", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,10 +80,9 @@ ActiveRecord::Schema.define(version: 20170516155803) do
     t.string   "sex"
     t.integer  "phone"
     t.string   "email"
-    t.boolean  "family_head"
     t.string   "species"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,5 +103,15 @@ ActiveRecord::Schema.define(version: 20170516155803) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "water_readings", force: :cascade do |t|
+    t.float    "meter_1"
+    t.float    "meter_2"
+    t.float    "meter_3"
+    t.integer  "flat_id"
+    t.integer  "month_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

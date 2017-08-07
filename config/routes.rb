@@ -8,11 +8,19 @@ Rails.application.routes.draw do
 
   post 'floors/create_floor', to: 'floors#create_floor'
 
+  get 'floors/water_meter_reading', to: 'floors#water_meter_reading'
+
+  post 'floors/add_water_meter_readings', to: 'floors#add_water_meter_readings'
+
   resources :floors
 
   post 'flats/create_flat', to: 'flats#create_flat'
 
   resources :flats
+
+  get 'residents/flat_residents', to: 'residents#flat_residents'
+
+  resources :residents
 
   authenticated :user do
     root to: 'apartments#index', as: :authenticated_root

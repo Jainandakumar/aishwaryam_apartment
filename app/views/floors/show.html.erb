@@ -1,9 +1,13 @@
 <%= link_to "Add flats", new_flat_path(floor_id: @floor.id), class: "btn btn-success btn-sm pull-right"%>
+<%= link_to "Add water meter reading", floors_water_meter_reading_path(floor_id: @floor.id), class: "btn btn-success btn-sm pull-right", style: 'margin-right:3px;'%>
 <table class="table table-bordered table-hover table-responsive">
 	<thead>
 		<th>Name</th>
 		<th>Bed Rooms</th>
 		<th>Sqft</th>
+		<th>Status</th>
+		<th>Rent(Rs)</th>
+		<th>Availability</th>
 		<th>Owner</th>
 		<th>Tenant</th>
 		<th>Manage</th>
@@ -14,8 +18,23 @@
 				<td><%= link_to flat.name, flat_path(flat)%></td>
 				<td><%= flat.bed_room%></td>
 				<td><%= flat.sq_ft%></td>
-				<td><%= flat.sq_ft%></td>
-				<td><%= flat.sq_ft%></td>
+				<td><%= flat_status(flat)%></td>
+				<td><%= flat.rent%></td>
+				<td><%= flat_availability(flat)%></td>
+				<td>
+					<% if true%>
+						None
+					<%else%>
+						Owner
+					<%end%>
+				</td>
+				<td>
+					<% if true%>
+						None
+					<%else%>
+						Tenant
+					<%end%>
+				</td>
 				<td>
 					<u><%= link_to "Edit", edit_flat_path(flat), class: "btn btn-warning btn-sm"%></u>
 					<u><%= link_to "Delete", flat, method: :delete, class: "btn btn-danger btn-sm"%></u>

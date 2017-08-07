@@ -26,6 +26,12 @@ class FlatsController < ApplicationController
 
 	def edit
 		@flat = Flat.find(params[:id])
+		@floor = @flat.floor
+		@block = @floor.block
+		add_breadcrumb @block.apartment.name, apartment_path(@block.apartment)
+		add_breadcrumb @block.name, block_path(@block)
+		add_breadcrumb @floor.name, floor_path(@floor)
+		add_breadcrumb @flat.name, edit_flat_path(@flat)
 	end
 
 	def update
@@ -40,6 +46,12 @@ class FlatsController < ApplicationController
 	def show
 		@flat = Flat.find(params[:id])
 		@residents = @flat.residents
+		@floor = @flat.floor
+		@block = @floor.block
+		add_breadcrumb @block.apartment.name, apartment_path(@block.apartment)
+		add_breadcrumb @block.name, block_path(@block)
+		add_breadcrumb @floor.name, floor_path(@floor)
+		add_breadcrumb @flat.name, flat_path(@flat)
 	end
 
 	def destroy

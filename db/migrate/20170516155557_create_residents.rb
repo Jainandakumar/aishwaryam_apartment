@@ -6,7 +6,6 @@ class CreateResidents < ActiveRecord::Migration
       t.string :sex
       t.integer :phone
       t.string :email
-      t.boolean :family_head
       t.string :species
 
       t.timestamps null: false

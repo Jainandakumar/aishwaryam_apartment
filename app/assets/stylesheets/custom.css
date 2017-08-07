@@ -1,0 +1,15 @@
+.bordered-box{
+	background-color: #f7f7f9;
+	width: 47%;
+	height: 150px;
+	margin: 10px;
+	text-align: center;
+	/* border-radius */
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	/* box-shadow */
+	-webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+	-moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+	box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+}

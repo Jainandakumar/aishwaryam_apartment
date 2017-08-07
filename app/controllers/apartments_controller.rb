@@ -12,7 +12,7 @@ class ApartmentsController < ApplicationController
 	def show
 		@apartment = Apartment.find(params[:id])
 		add_breadcrumb @apartment.name, apartment_path(@apartment)
-		@blocks = @apartment.blocks
+		@blocks = @apartment.blocks.sort
 	end
 
 	def create

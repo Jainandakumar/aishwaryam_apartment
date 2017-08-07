@@ -40,7 +40,7 @@ class BlocksController < ApplicationController
 		@block = Block.find(params[:id])
 		add_breadcrumb @block.apartment.name, apartment_path(@block.apartment)
 		add_breadcrumb @block.name, block_path(@block)
-		@floors = @block.floors
+		@floors = @block.floors.sort
 	end
 
 	def destroy

@@ -1,0 +1,65 @@
+<div class="">
+  <h1><small>Edit flat</small></h1>
+</div>
+<hr>
+<%= form_for @flat, html: {class: "form-horizontal"} do |flat|%>
+	<div class="form-group">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-4">
+    	<%= flat.text_field :name, autofocus: true, class: "form-control", placeholder: "Name", required: true %>
+	  </div>
+	</div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Bed room</label>
+    <div class="col-sm-4">
+      <%= flat.text_field :bed_room, class: "form-control", placeholder: "Bed room", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Sqft</label>
+    <div class="col-sm-4">
+      <%= flat.text_field :sq_ft, class: "form-control", placeholder: "Sqft", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Status</label>
+    <div class="col-sm-2 radio">
+      <label>
+        <%= flat.radio_button :status, true%>
+        Owned
+      </label>
+    </div>
+    <div class="col-sm-2 radio">
+      <label>
+        <%= flat.radio_button :status, false%>
+        Rented
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Rent(Rs)</label>
+    <div class="col-sm-4">
+      <%= flat.text_field :rent, class: "form-control", placeholder: "Rent" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Availability</label>
+    <div class="col-sm-2 radio">
+      <label>
+        <%= flat.radio_button :availability, true%>
+        Vacant
+      </label>
+    </div>
+    <div class="col-sm-2 radio">
+      <label>
+        <%= flat.radio_button :availability, false%>
+        Occupied
+      </label>
+    </div>
+  </div>
+	<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <%= flat.submit "Update", class: "btn btn-success pull-right" %>
+    </div>
+  </div>
+<%end%>

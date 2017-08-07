@@ -1,0 +1,23 @@
+<%= form_tag floors_add_water_meter_readings_path, method: :post do %>
+	<table class="table table-bordered table-hover table-responsive">
+		<thead>
+			<th>Flat</th>
+			<th>Meter 1</th>
+			<th>Meter 2</th>
+			<th>Meter 3</th>
+		</thead>
+		<tbody>
+			<% @flat_readings.each do |flat_id, reading|%>
+				<tr>
+					<td><%= Flat.find(flat_id).name%></td>
+					<td><%= text_field_tag "reading[#{flat_id}][meter_1]", reading[0]%></td>
+					<td><%= text_field_tag "reading[#{flat_id}][meter_2]", reading[1]%></td>
+					<td><%= text_field_tag "reading[#{flat_id}][meter_3]", reading[2]%></td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+	<%= submit_tag 'Submit', class: "btn btn-success btn-sm pull-right"%>
+	<%= hidden_field_tag 'floor_id', @floor.id%>
+	<%= hidden_field_tag 'month_id', @month_id%>
+<%end%>
