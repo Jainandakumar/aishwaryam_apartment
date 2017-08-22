@@ -31,6 +31,8 @@ gem 'puma'
 
 gem "breadcrumbs_on_rails"
 
+gem 'delayed_job_active_record'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
