@@ -26,6 +26,7 @@ class FlatsController < ApplicationController
 
 	def edit
 		@flat = Flat.find(params[:id])
+		@page = params[:page]
 		@floor = @flat.floor
 		@block = @floor.block
 		add_breadcrumb @block.apartment.name, apartment_path(@block.apartment)
@@ -39,7 +40,11 @@ class FlatsController < ApplicationController
 		@flat = Flat.find(params[:id])
 		floor = @flat.floor
 		@flat.update(params[:flat])
-		redirect_to floor_path(floor)
+		if params[:page] == 'show'
+			redirect_to flat_path(@flat)
+		else
+			redirect_to floor_path(floor)
+		end
 		flash[:notice] = "Flat updated successfully!"
 	end
 
@@ -52,6 +57,7 @@ class FlatsController < ApplicationController
 		add_breadcrumb @block.name, block_path(@block)
 		add_breadcrumb @floor.name, floor_path(@floor)
 		add_breadcrumb @flat.name, flat_path(@flat)
+		@months = Month.all
 	end
 
 	def destroy
@@ -60,6 +66,29 @@ class FlatsController < ApplicationController
 		@flat.destroy
 		redirect_to floor_path(floor)
 		flash[:notice] = "Flat deleted successfully!"
+	end
+
+	def edit_water_readings
+		@flat = Flat.find(params[:id])
+		@months = Month.all
+		@floor = @flat.floor
+		@block = @floor.block
+		add_breadcrumb @block.apartment.name, apartment_path(@block.apartment)
+		add_breadcrumb @block.name, block_path(@block)
+		add_breadcrumb @floor.name, floor_path(@floor)
+		add_breadcrumb @flat.name, flat_path(@flat)
+		add_breadcrumb 'Edit water readings', flats_edit_water_readings_path(id: @flat.id)
+	end
+
+	def update_water_readings
+		params.permit!
+		if params[:reading].present?
+			params[:reading].each do |month_id, reading|
+				WaterReading.create(flat_id: params[:flat_id], month_id: month_id, meter_1: reading[:meter_1], meter_2: reading[:meter_2], meter_3: reading[:meter_3])
+			end
+		end
+		flash[:notice] = "Water readings added successfully!"
+		redirect_to flat_path(Flat.find(params[:flat_id]))
 	end
 
 end

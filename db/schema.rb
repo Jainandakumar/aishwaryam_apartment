@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170807120549) do
     t.date     "from"
     t.date     "to"
     t.boolean  "family_head"
+    t.boolean  "owner"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 20170807120549) do
     t.string   "sex"
     t.integer  "phone"
     t.string   "email"
-    t.string   "species"
+    t.boolean  "pet"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

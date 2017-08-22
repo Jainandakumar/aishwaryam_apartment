@@ -1,12 +1,24 @@
-<div class="bordered-box col-md-6">
-<h4><u>Owner Details</u></h4>
+<div class="row">
+	<div class="bordered-box col-md-6">
+	<h4><u>Basic Details</u>  <%= link_to "Edit", edit_flat_path(id: @flat, page: 'show'), class: "btn btn-warning btn-sm"%></h4>
+	<%= render partial: 'basic_details'%>
+	</div>
+	<div class="bordered-box col-md-6">
+	<h4><u>Owner Details</u>
+		<% if @flat.owner.present?%>
+			<%= link_to "Edit", flats_edit_water_readings_path(id: @flat.id), class: "btn btn-warning btn-sm"%>
+		<%else%>
+			<%= link_to "Add", new_resident_path(flat_id: @flat.id, owner: true), class: "btn btn-warning btn-sm"%>
+		<%end%>
+	</h4>
+	</div>
 </div>
-<div class="bordered-box col-md-6">
-<h4><u>Tenant Details</u></h4>
+<div class="row">
+	<div class="bordered-box col-md-6">
+	<h4><u>Water Readings</u> <%= link_to "Edit", flats_edit_water_readings_path(id: @flat.id), class: "btn btn-warning btn-sm"%></h4>
+	<%= render partial: 'water_readings'%>
+	</div>
+	<div class="bordered-box col-md-6">
+	<h4><u>Tenant Details</u>  <%= link_to "Edit", flats_edit_water_readings_path(id: @flat.id), class: "btn btn-warning btn-sm"%></h4>
+	</div>
 </div>
-<div class="bordered-box col-md-6">
-<h4><u>Water Readings</u></h4>
-</div>
-<!-- <div class="bordered-box col-md-6">
-<h4><u>Owner Details</u></h4>
-</div> -->

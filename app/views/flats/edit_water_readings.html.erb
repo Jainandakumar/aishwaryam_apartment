@@ -1,0 +1,24 @@
+<%= form_tag flats_update_water_readings_path, method: :put do%>
+	<table class="table table-bordered table-hover table-responsive">
+		<thead>
+			<th>Month</th>
+			<th>Meter 1</th>
+			<th>Meter 2</th>
+			<th>Meter 3</th>
+		</thead>
+		<tbody>
+			<% @months.each do |month|%>
+				<tr>
+					<% water_reading = @flat.current_year_water_readings.find_by(month_id: month.id)%>
+					<% water_readings = water_reading.present? ? [water_reading.meter_1, water_reading.meter_2, water_reading.meter_3] : [0.0, 0.0, 0.0]%>
+					<th><%= month.name%></th>
+					<td><%= text_field_tag "reading[#{month.id}][meter_1]", water_readings[0] %></td>
+					<td><%= text_field_tag "reading[#{month.id}][meter_2]", water_readings[1] %></td>
+					<td><%= text_field_tag "reading[#{month.id}][meter_3]", water_readings[2] %></td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+	<%= hidden_field_tag 'flat_id', @flat.id%>
+	<%= submit_tag 'Submit', class: "btn btn-success btn-sm pull-right"%>
+<%end%>

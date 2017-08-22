@@ -7,6 +7,7 @@ class CreateFlatsResidents < ActiveRecord::Migration
       t.date :from
       t.date :to
       t.boolean :family_head
+      t.boolean :owner
 
       t.timestamps null: false
     end

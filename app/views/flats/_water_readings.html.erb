@@ -1,0 +1,27 @@
+<table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<tr>
+			<th rowspan="2" style="text-align: center;">Month</th>
+			<th colspan="3" style="text-align: center;">Meter</th>
+			<th rowspan="2" style="text-align: center;">Usage</th>
+		</tr>
+		<tr>
+			<th style="text-align: center;">1</th>
+			<th style="text-align: center;">2</th>
+			<th style="text-align: center;">3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @months.each do |month|%>
+			<tr>
+				<% water_reading = @flat.current_year_water_readings.find_by(month_id: month.id)%>
+				<% water_readings = water_reading.present? ? [water_reading.meter_1, water_reading.meter_2, water_reading.meter_3] : [0.0, 0.0, 0.0]%>
+				<th><%= month.name%></th>
+				<td><%= water_readings[0] %></td>
+				<td><%= water_readings[1] %></td>
+				<td><%= water_readings[2] %></td>
+				<td><%= water_readings[0] + water_readings[1] + water_readings[2] %></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+document.addEventListener("turbolinks:load", function(){
 	$('#month_month_id').change(function(){
 		var data = {month_id: $('#month_month_id :selected').val(), floor_id: $('#floor_id').val()};
 		if(data['month_id'] != ''){
